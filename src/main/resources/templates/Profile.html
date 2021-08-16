@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+</head>
+<body>
+<header>
+    <div>
+        <h2 style="width: 80%;">Hello <span th:text="${userProfile.username}"></span> :)</h2>
+        <br><br><br>
+        <div>
+            <form action="/" method="get">
+                <button type="submit">Home</button>
+            </form>
+        </div>
+    </div>
+</header>
+<main>
+<div>
+    <img src="https://www.meme-arsenal.com/memes/005754c81977199be7a2fb68c8f48107.jpg" alt="PofilePicture">
+    <p>First Name: <span th:text="${userProfile.firstName}"></span></p>
+    <p>Last Name: <span th:text="${userProfile.lastName}"></span></p>
+    <p>Date of birth: <span th:text="${userProfile.dateOfBirth}"></span></p>
+    <p>Bio: <span th:text="${userProfile.bio}"></span></p>
+</div>
+</main>
+</body>
+</html>

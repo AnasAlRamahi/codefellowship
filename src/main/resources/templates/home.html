@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<header>
+  <div>
+    <h2 style="width: 80%;">Hello <span th:text="${userInfoName}"></span> :)</h2>
+    <form style="float: right;" action="perform_logout" method="get">
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+    <br><br><br>
+    <div>
+        <form action="/user/${userProfile.id}" method="get">
+            <button type="submit">Profile Page</button>
+        </form>
+    </div>
+</header>
+</body>
+</html>
