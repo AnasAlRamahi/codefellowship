@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>User Info</title>
+</head>
+<body>
+<header>
+  <div>
+    <div ><h3 th:text="${userInfoName}"></h3></div>
+    <br><br><br>
+    <div>
+      <form action="/home" method="get">
+        <button type="submit">Home</button>
+      </form>
+    </div>
+  </div>
+</header>
+<main>
+  <div>
+    <img src="https://c.tenor.com/o0KwNh5LwK4AAAAC/cat-meow.gif" alt="ProfilePicture">
+    <p>First Name: <span th:text="${userProfile.firstName}"></span></p>
+    <p>Last Name: <span th:text="${userProfile.lastName}"></span></p>
+    <p>Date of birth: <span th:text="${userProfile.dateOfBirth}"></span></p>
+    <p>Bio: <span th:text="${userProfile.bio}"></span></p>
+  </div>
+
+  <br>
+  <h3>Posts</h3>
+  <hr>
+
+  <div>
+    <div th:each="post : ${userProfile.posts}">
+      <p th:text="${post.body}"></p>
+      <p th:text="${post.createdAt}"></p>
+      <hr>
+    </div>
+  </div>
+
+
+</main>
+
+
+<div th:replace="fragments :: footer"></div>
+
+
+</body>
+</html>

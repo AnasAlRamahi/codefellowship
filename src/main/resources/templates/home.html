@@ -6,18 +6,16 @@
 </head>
 <body>
 <header>
-  <div>
-    <h2 style="width: 80%;">Hello <span th:text="${userInfoName}"></span> :)</h2>
-    <form style="float: right;" action="perform_logout" method="get">
-      <button type="submit">Logout</button>
-    </form>
-  </div>
+    <div th:replace="fragments :: welcomeMessage"></div>
     <br><br><br>
     <div>
-        <form action="/user/${userProfile.id}" method="get">
+        <form action="/profile" method="get">
             <button type="submit">Profile Page</button>
         </form>
     </div>
 </header>
+
+<div th:replace="fragments :: footer"></div>
+
 </body>
 </html>
