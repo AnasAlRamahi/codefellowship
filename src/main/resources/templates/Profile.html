@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
 </head>
 <body>
 <header>
+<!--    <div sec:authentication="name"></div>-->
+
     <div>
-        <h2 style="width: 80%;">Hello <span th:text="${userProfile.username}"></span> :)</h2>
+        <div th:replace="fragments :: welcomeMessage"></div>
         <br><br><br>
         <div>
-            <form action="/" method="get">
+            <form action="/home" method="get">
                 <button type="submit">Home</button>
             </form>
         </div>
@@ -18,12 +20,39 @@
 </header>
 <main>
 <div>
-    <img src="https://www.meme-arsenal.com/memes/005754c81977199be7a2fb68c8f48107.jpg" alt="PofilePicture">
+    <img src="https://c.tenor.com/o0KwNh5LwK4AAAAC/cat-meow.gif" alt="ProfilePicture">
     <p>First Name: <span th:text="${userProfile.firstName}"></span></p>
     <p>Last Name: <span th:text="${userProfile.lastName}"></span></p>
     <p>Date of birth: <span th:text="${userProfile.dateOfBirth}"></span></p>
     <p>Bio: <span th:text="${userProfile.bio}"></span></p>
 </div>
+
+    <div>
+        <form action="/addPost" method="post">
+            <label for="body">Add a post: <br></label>
+            <input type="textarea" name="body" id="body">
+            <button type="submit">Add post</button>
+        </form>
+    </div>
+
+    <br>
+    <h3>Posts</h3>
+    <hr>
+
+    <div>
+        <div th:each="post : ${userProfile.posts}">
+            <p th:text="${post.body}"></p>
+            <p th:text="${post.createdAt}"></p>
+            <hr>
+        </div>
+    </div>
+
+
 </main>
+
+
+<div th:replace="fragments :: footer"></div>
+
+
 </body>
 </html>

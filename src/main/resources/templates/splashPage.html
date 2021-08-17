@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/splashPage.css}"/>-->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/splashPage.css}"/>
+
+  <!--    <link rel="stylesheet" th:href="@{splashPage.css}">-->
+    <title>CodeFellowShip</title>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1 id="mainHeader">CodeFellowShip</h1>
+    <div sec:authorize ="!isAuthenticated()">
+      <nav>
+        <ul>
+          <li>
+            <a href="/signup">Sign up</a>
+          </li>
+          <li>
+            <a href="/login">Log in</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div id="memesDiv">
+  <img th:src="1.png" alt="GET PRANKED :P">
+  <br>
+  <img src="2.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="3.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="4.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="5.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="6.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="7.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="8.png" alt="GET PRANKED :P">
+  <br>
+  <img src="9.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="10.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="11.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="12.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="13.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="14.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="15.jpg" alt="GET PRANKED :P">
+  <br>
+  <img src="16.jpg" alt="GET PRANKED :P">
+  <br>
+</div>
+</main>
+
+<div th:replace="fragments :: footer"></div>
+
+
+</body>
+</html>
