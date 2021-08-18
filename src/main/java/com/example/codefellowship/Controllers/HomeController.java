@@ -32,6 +32,8 @@ public class HomeController {
     @GetMapping("/user/{id}")
     public String getUserProfile(Principal p, Model m, @PathVariable Integer id){
         ApplicationUser user = applicationUserRepository.findById(id).get();
+        ApplicationUser loggedUser = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("logUser", loggedUser);
         m.addAttribute("userInfoName", user.getUsername());
         m.addAttribute("userProfile", user);
         return "UserInformation.html";

@@ -28,6 +28,16 @@ public class ApplicationUser implements UserDetails {
 
     }
 
+    @ManyToMany
+    @JoinTable(name = "follow",
+            joinColumns = {@JoinColumn(name = "followingUserId")},
+            inverseJoinColumns = {@JoinColumn(name = "followedUserId")}
+    )
+    private List<ApplicationUser> followingUser;
+
+    @ManyToMany(mappedBy = "followingUser")
+    private List<ApplicationUser> followedUser;
+
     public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {
         this.username = username;
         this.password = password;
@@ -35,6 +45,14 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
+    }
+
+    public List<ApplicationUser> getFollowingUser() {
+        return followingUser;
+    }
+
+    public List<ApplicationUser> getFollowedUser() {
+        return followedUser;
     }
 
     public Integer getId() {
@@ -95,4 +113,9 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public void addFollower(ApplicationUser applicationUser){
+        followingUser.add(applicationUser);
+    }
+
 }
