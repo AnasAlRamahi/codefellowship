@@ -23,6 +23,10 @@
     <p>Last Name: <span th:text="${userProfile.lastName}"></span></p>
     <p>Date of birth: <span th:text="${userProfile.dateOfBirth}"></span></p>
     <p>Bio: <span th:text="${userProfile.bio}"></span></p>
+    <br>
+    <form th:action="@{/follow/{id}(id=${userProfile.id})}" method="post">
+      <button type="submit">Follow</button>
+    </form>
   </div>
 
   <br>

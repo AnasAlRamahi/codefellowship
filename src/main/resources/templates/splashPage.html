@@ -13,7 +13,7 @@
 <header>
   <div>
     <h1 id="mainHeader">CodeFellowShip</h1>
-    <div sec:authorize ="!isAuthenticated()">
+    <div sec:authorize="${!isAuthenticated()}">
       <nav>
         <ul>
           <li>
