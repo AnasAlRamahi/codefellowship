@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -33,10 +34,10 @@ public class ApplicationUser implements UserDetails {
             joinColumns = {@JoinColumn(name = "followingUserId")},
             inverseJoinColumns = {@JoinColumn(name = "followedUserId")}
     )
-    private List<ApplicationUser> followingUser;
+    private Set<ApplicationUser> followingUser;
 
     @ManyToMany(mappedBy = "followingUser")
-    private List<ApplicationUser> followedUser;
+    private Set<ApplicationUser> followedUser;
 
     public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {
         this.username = username;
@@ -47,11 +48,11 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
-    public List<ApplicationUser> getFollowingUser() {
+    public Set<ApplicationUser> getFollowingUser() {
         return followingUser;
     }
 
-    public List<ApplicationUser> getFollowedUser() {
+    public Set<ApplicationUser> getFollowedUser() {
         return followedUser;
     }
 

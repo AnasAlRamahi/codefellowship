@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header>
+  <div th:replace="fragments :: welcomeMessage"></div>
+  <br><br><br>
+  <div>
+    <form action="/profile" method="get">
+      <button type="submit">Profile Page</button>
+    </form>
+    <br>
+  </div>
+</header>
+
+<div th:each="user : ${allUsers}">
+  <p><span th:text="${user.getUsername()}"></span></p>
+  <br><br><br>
+</div>
+
+
+</body>
+</html>

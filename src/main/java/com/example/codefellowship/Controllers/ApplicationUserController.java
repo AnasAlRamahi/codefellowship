@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.security.Principal;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -38,6 +40,13 @@ public class ApplicationUserController {
         ApplicationUser newUser = new ApplicationUser(username,bCryptPasswordEncoder.encode(password), firstName, lastName, dateOfBirth, bio);
         applicationUserRepository.save(newUser);
         return new RedirectView("login");
+    }
+
+    @GetMapping("/allusers")
+    public String showAllUsers(Principal p , Model m){
+        Iterable<ApplicationUser> allUsers = applicationUserRepository.findAll();
+        m.addAttribute("allUsers", allUsers);
+        return "allUsers.html";
     }
 
 }

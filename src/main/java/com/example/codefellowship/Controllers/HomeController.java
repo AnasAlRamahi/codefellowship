@@ -1,6 +1,7 @@
 package com.example.codefellowship.Controllers;
 
 import com.example.codefellowship.Models.ApplicationUser;
+import com.example.codefellowship.Models.Post;
 import com.example.codefellowship.Repositories.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class HomeController {
@@ -25,7 +29,18 @@ public class HomeController {
 
     @GetMapping("/home")
     public String getHome(Model m, Principal p){
-        m.addAttribute("userInfoName", p.getName());
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+//        Set<ApplicationUser> followedUsers = user.getFollowedUser();
+//        List<Post> feedPosts = new ArrayList<Post>();
+//        for(ApplicationUser followed: followedUsers){
+//            for(Post post: followed.getPosts()){
+//                feedPosts.add(post);
+//                System.out.println(post);
+//            }
+//        }
+//        m.addAttribute("userInfoName", p.getName());
+//        m.addAttribute("feedPosts", feedPosts);
+        m.addAttribute("users", user.getFollowingUser());
         return "home.html";
     }
 
